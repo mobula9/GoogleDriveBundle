@@ -1,0 +1,61 @@
+parameters:
+  kasifi_gdrive.p12_filepath: "%kernel.root_dir%/config/google.p12"
+  kasifi_gdrive.download_directory: "%kernel.root_dir%/../data/documents"
+  kasifi_gdrive.notification_config:
+    - name: A découper
+      type: 0
+      id: "%gdrive_directory_base_id%"
+    - name: A trier
+      type: 1
+      id: "%gdrive_directory_splited_id%"
+
+services:
+  kasifi_gdrive.connector:
+    class: Kasifi\GoogleDriveBundle\DriveConnector
+    arguments:
+      - "%kasifi_gdrive.p12_filepath%"
+      - "%kasifi_gdrive.google_drive_client_email%"
+      - "%kasifi_gdrive.google_auth_sub%"
+
+  kasifi_gdrive.finder:
+    class: Kasifi\GoogleDriveBundle\DriveFinder
+    arguments:
+      - "@kasifi_gdrive.connector"
+      - "%kasifi_gdrive.download_directory%"
+    calls:
+      - [ setLogger,  ["@logger"] ]
+    tags:
+      - { name: monolog.logger, channel: webhook}
+
+  kasifi_gdrive.modifier:
+    class: Kasifi\GoogleDriveBundle\DriveModifier
+    arguments:
+      - "@kasifi_gdrive.connector"
+      - "@kasifi_gdrive.finder"
+    calls:
+      - [ setLogger, ["@logger"]]
+    tags:
+      - { name: monolog.logger, channel: webhook}
+
+  kasifi_gdrive.channel_manager:
+    class : Kasifi\GoogleDriveBundle\ChannelManager
+    arguments:
+      - "@doctrine.orm.default_entity_manager"
+      - "@router"
+      - "@kasifi_gdrive.modifier"
+      - "%gdrive_oauth_https_callback_prefix%"
+    calls:
+      - [ setLogger,  ["@logger"] ]
+    tags:
+      - { name: monolog.logger, channel: webhook}
+
+  kasifi_gdrive.notification_handler:
+    class : Kasifi\GoogleDriveBundle\NotificationHandler
+    arguments:
+      - "@doctrine.orm.default_entity_manager"
+      - "@router"
+      - "%gdrive_oauth_https_callback_prefix%"
+    calls:
+      - [ setLogger,  ["@logger"] ]
+    tags:
+      - { name: monolog.logger, channel: webhook}

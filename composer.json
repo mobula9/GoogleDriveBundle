@@ -1,0 +1,20 @@
+{
+    "name": "lucascherifi/google-drive-bundle",
+    "description": "A Symfony bundle to handle Google Drive API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas CHERIFI",
+            "email": "lucas@cherifi.info"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Kasifi\\GoogleDriveBundle\\": ""
+        }
+    },
+    "require": {
+        "google/apiclient": "1.0.*@beta"
+    },
+    "minimum-stability": "stable"
+}
