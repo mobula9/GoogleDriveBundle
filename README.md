@@ -1,25 +1,27 @@
 Google Drive Bundle
 ===================
 
+# Prerequisites
+
+- Google developer console
+- HTTPS
+...
+
+# Limitations
+
+- Doctrine only
+
 ### Install
 
-- HTTPS
-- Google developer console
 - Custom logger
-- CRON setup
 - Custom processors
 - routing.yml
 - download directory
+- CRON setup
 ...
 
 ### TODO
 
-Notification => Logger
-GoogleDriveChannel => Doctrine
-Webhook
-CRUDHelpers
-Custom processors (tag)
-Commands:
-- Subscribe
-- Udpate (for CRON)
-- Unsubscribe
+- Notification => Logger
+- CRUDHelpers
+- Custom processors (tag)
