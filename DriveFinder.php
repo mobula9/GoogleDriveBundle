@@ -69,12 +69,12 @@ class DriveFinder implements LoggerAwareInterface
 
     /**
      * @param String $folderId ID of the folder to print files from.
-     *
      * @param string $mimeType
+     * @param int    $max
      *
-     * @return Google_Service_Drive_DriveFile[]
+     * @return \Google_Service_Drive_DriveFile[]
      */
-    public function getFolderChildren($folderId, $mimeType = 'pdf')
+    public function getFolderChildren($folderId, $mimeType = 'pdf', $max = 200)
     {
         $pageToken = null;
         $items = [];
@@ -85,7 +85,9 @@ class DriveFinder implements LoggerAwareInterface
             ]);
 
             $items = array_merge($items, $list->getItems());
-            $pageToken = $list->getNextPageToken();
+            if (count($items) < $max) {
+                $pageToken = $list->getNextPageToken() ?: null;
+            }
         } while ($pageToken);
 
         return $items;
