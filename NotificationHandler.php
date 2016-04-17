@@ -5,29 +5,21 @@ namespace Kasifi\GoogleDriveBundle;
 use Doctrine\ORM\EntityManager;
 use Kasifi\GoogleDriveBundle\Entity\NotificationChannel;
 use Psr\Log\LoggerAwareInterface;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\HttpFoundation\Request;
 
 class NotificationHandler implements LoggerAwareInterface
 {
     use Loggable;
 
-    private $gdriveOauthHttpsCallbackPrefix;
-
     /** @var array */
     private $processors;
-
-    /** @var Router */
-    private $router;
 
     /** @var EntityManager */
     private $em;
 
-    public function __construct(EntityManager $em, Router $router, $gdriveOauthHttpsCallbackPrefix)
+    public function __construct(EntityManager $em)
     {
         $this->em = $em;
-        $this->router = $router;
-        $this->gdriveOauthHttpsCallbackPrefix = $gdriveOauthHttpsCallbackPrefix;
     }
 
     public function addProcessor(ProcessorInterface $processor)

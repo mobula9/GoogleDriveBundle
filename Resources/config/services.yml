@@ -53,8 +53,6 @@ services:
     class : Kasifi\GoogleDriveBundle\NotificationHandler
     arguments:
       - "@doctrine.orm.default_entity_manager"
-      - "@router"
-      - "%gdrive_oauth_https_callback_prefix%"
     calls:
       - [ setLogger,  ["@logger"] ]
     tags:

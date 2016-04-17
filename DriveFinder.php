@@ -34,13 +34,13 @@ class DriveFinder implements LoggerAwareInterface
      *
      * @return Google_Service_Drive_FileList $items
      */
-    public function searchResource($query, $max = 30)
+    public function searchResource($query, $max = 200)
     {
         $driveService = $this->driveConnector->getService();
         $items = [];
         $pageToken = null;
         do {
-            $list = $driveService->files->listFiles(['q' => $query]); // todo <= previous request !
+            $list = $driveService->files->listFiles(['q' => $query]);
             /** @var Google_Service_Drive_FileList $responseItems */
             $responseItems = $list->getItems();
             foreach ($responseItems as $item) {
@@ -50,9 +50,9 @@ class DriveFinder implements LoggerAwareInterface
                 $items[] = $item;
             }
             if (count($items) < $max) {
-                $pageToken = $list->getNextPageToken() ?: null; // todo : seems to not work (may be we should improve previous request)
+                $pageToken = $list->getNextPageToken() ?: null;
             }
-        } while ($pageToken != null && count($items) <= $max);
+        } while ($pageToken !== null && count($items) <= $max);
 
         return $items;
     }
@@ -80,10 +80,6 @@ class DriveFinder implements LoggerAwareInterface
         $items = [];
 
         do {
-            $parameters = [];
-            if ($pageToken) {
-                $parameters['pageToken'] = $pageToken;
-            }
             $list = $this->driveConnector->getService()->files->listFiles([
                 'q' => '"' . $folderId . '" in parents and mimeType contains "' . $mimeType . '" and trashed = false',
             ]);

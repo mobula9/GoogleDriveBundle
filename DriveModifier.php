@@ -46,9 +46,7 @@ class DriveModifier implements LoggerAwareInterface
     {
         $file = new Google_Service_Drive_DriveFile();
         $file->setTitle($title);
-        $updatedFile = $this->driveConnector->getService()->files->patch($fileId, $file, [
-            'fields' => 'title',
-        ]);// todo : only one RQ !
+        $updatedFile = $this->driveConnector->getService()->files->patch($fileId, $file, ['fields' => 'title']);
         $this->log('File renamed', ['src' => $fileId, 'dest' => $title]);
 
         return $updatedFile;

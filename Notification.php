@@ -2,8 +2,6 @@
 
 namespace Kasifi\GoogleDriveBundle;
 
-use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Kasifi\GoogleDriveBundle\Entity\NotificationChannel;
 
 class Notification
