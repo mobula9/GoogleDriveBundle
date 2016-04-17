@@ -22,11 +22,3 @@ Google Drive Bundle
 ```bash
 $ composer require lucascherifi/google-drive-bundle "dev-master"
 ```
-
-...
-
-### TODO
-
-- Notification => Logger
-- CRUDHelpers
-- Custom processors (tag)
