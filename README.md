@@ -7,23 +7,23 @@ The purpose of this bundle is to improve the usage of Google Drive API within Sy
 
 The main features of this bundle are:
 
-- *Resources Finder*
+- **Resources Finder**
     - Search a resource
     - List children of a resource
     - Get resource metadata
     - Download files
 
-- *Resource Modifier*
+- **Resources Modifier**
     - Move a resource to another drive directory
     - Remove a resource (trash or not)
     - Rename a resource
     - Upload a resource to a drive directory
     - Create a drive directory
 
-- *Webhook management*
-    - watch/unwatch resource
-    - handle notifications via tagged processor services (you can create yours)
-    - fully manage subcriptions (Symfony commands provided to auto-update subscriptions)
+- **Webhook management**
+    - Watch/unwatch resource
+    - Handle notifications via tagged processor services (you can create yours)
+    - Fully manage subcriptions (Symfony commands provided to auto-update subscriptions)
 
 # Prerequisites
 
