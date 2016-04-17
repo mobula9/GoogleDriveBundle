@@ -18,6 +18,11 @@ Google Drive Bundle
 - routing.yml
 - download directory
 - CRON setup
+
+```bash
+$ composer require lucascherifi/google-drive-bundle "dev-master"
+```
+
 ...
 
 ### TODO
