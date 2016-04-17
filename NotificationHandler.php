@@ -23,7 +23,8 @@ class NotificationHandler implements LoggerAwareInterface
     /** @var EntityManager */
     private $em;
 
-    public function __construct(EntityManager $em, Router $router, $gdriveOauthHttpsCallbackPrefix) {
+    public function __construct(EntityManager $em, Router $router, $gdriveOauthHttpsCallbackPrefix)
+    {
         $this->em = $em;
         $this->router = $router;
         $this->gdriveOauthHttpsCallbackPrefix = $gdriveOauthHttpsCallbackPrefix;
@@ -90,7 +91,7 @@ class NotificationHandler implements LoggerAwareInterface
             'channel' => $channel->getName(),
             'state'   => $resourceState,
             'changed' => $changed,
-            //'exp'      => $channel ? $channel->getExpiration()->format('Y-m-d H:i:s') : null,
+            'exp'     => $channel ? $channel->getExpiration()->format('Y-m-d H:i:s') : null,
         ]);
 
         return $notification;

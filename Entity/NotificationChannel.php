@@ -42,7 +42,7 @@ class NotificationChannel
     private $type;
 
     /**
-     * @var string
+     * @var DateTime
      *
      * @ORM\Column(name="expiration", type="datetime", nullable=true)
      */

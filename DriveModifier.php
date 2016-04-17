@@ -89,10 +89,10 @@ class DriveModifier implements LoggerAwareInterface
     public function watch(Google_Service_Drive_Channel $driveChannel, $monitoredResource = null)
     {
         if ($monitoredResource) {
-            return $driveChannel = $this->driveConnector->getService()->files->watch($monitoredResource, $driveChannel);
+            return $this->driveConnector->getService()->files->watch($monitoredResource, $driveChannel);
         }
 
-        return $driveChannel = $this->driveConnector->getService()->changes->watch($driveChannel);
+        return $this->driveConnector->getService()->changes->watch($driveChannel);
     }
 
     public function stopWatch(Google_Service_Drive_Channel $driveChannel)

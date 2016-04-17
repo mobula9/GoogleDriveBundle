@@ -40,8 +40,8 @@ class DriveFinder implements LoggerAwareInterface
         $items = [];
         $pageToken = null;
         do {
-            /** @var Google_Service_Drive_FileList $responseItems */
             $list = $driveService->files->listFiles(['q' => $query]); // todo <= previous request !
+            /** @var Google_Service_Drive_FileList $responseItems */
             $responseItems = $list->getItems();
             foreach ($responseItems as $item) {
                 if (count($items) > $max) {
@@ -74,7 +74,7 @@ class DriveFinder implements LoggerAwareInterface
      *
      * @return Google_Service_Drive_DriveFile[]
      */
-    function getFolderChildren($folderId, $mimeType = 'pdf')
+    public function getFolderChildren($folderId, $mimeType = 'pdf')
     {
         $pageToken = null;
         $items = [];
@@ -115,7 +115,7 @@ class DriveFinder implements LoggerAwareInterface
             return $filePath;
         }
 
-        $request = new Google_Http_Request($driveFile->getDownloadUrl(), 'GET', null, null);
+        $request = new Google_Http_Request($driveFile->getDownloadUrl(), 'GET', [], null);
         $httpRequest = $this->driveConnector->getService()->getClient()->getAuth()->authenticatedRequest($request);
 
         if ($httpRequest->getResponseHttpCode() != 200) {
