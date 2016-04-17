@@ -3,24 +3,53 @@
 Google Drive Bundle
 ===================
 
+The purpose of this bundle is to improve the usage of Google Drive API within Symfony applications.
+
+The main features of this bundle are:
+
+- *Resources Finder*
+    - Search a resource
+    - List children of a resource
+    - Get resource metadata
+    - Download files
+
+- *Resource Modifier*
+    - Move a resource to another drive directory
+    - Remove a resource (trash or not)
+    - Rename a resource
+    - Upload a resource to a drive directory
+    - Create a drive directory
+
+- *Webhook management*
+    - watch/unwatch resource
+    - handle notifications via tagged processor services (you can create yours)
+    - fully manage subcriptions (Symfony commands provided to auto-update subscriptions)
+
 # Prerequisites
 
-- Google developer console
-- HTTPS
-...
+- Google Oauth Account and its p12 file (via Google Developer Console)
+- Web endpoint available with signed HTTPS (not auto-signed, Google accepts to send notifications only via real signed HTTPS)
 
-# Limitations
+# Bundle limitations
 
-- Doctrine only
+Currently, this bundle is only work with *Doctrine ORM*.
 
-### Install
+I'd love someone to be interested to develop ODM version :)
 
-- Custom logger
-- Custom processors
-- routing.yml
-- download directory
-- CRON setup
 
-```bash
-$ composer require lucascherifi/google-drive-bundle "dev-master"
-```
+Installation
+------------
+
+- [Installation documentation](https://github.com/lucascherifi/GoogleDriveBundle/blob/master/doc/install.md)
+
+Contributing
+------------
+
+- [Contributing documentation](https://github.com/lucascherifi/GoogleDriveBundle/blob/master/doc/contributing.md)
+
+License
+-------
+
+This bundle is under the MIT license. See the complete license in the bundle:
+
+    ./LICENSE
