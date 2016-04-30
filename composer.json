@@ -14,7 +14,6 @@
         }
     },
     "require": {
-        "google/apiclient": "1.0.*@beta"
-    },
-    "minimum-stability": "stable"
+        "google/apiclient": "^1"
+    }
 }
