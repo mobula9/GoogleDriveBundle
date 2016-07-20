@@ -42,6 +42,11 @@ Installation
 
 - [Installation documentation](https://github.com/lucascherifi/GoogleDriveBundle/blob/master/doc/install.md)
 
+Usage examples
+--------------
+
+- [File download example](https://github.com/lucascherifi/GoogleDriveBundle/blob/master/doc/download.md)
+
 Contributing
 ------------
 
