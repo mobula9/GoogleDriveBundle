@@ -1,13 +1,6 @@
 parameters:
   kasifi_gdrive.p12_filepath: "%kernel.root_dir%/config/google.p12"
   kasifi_gdrive.download_directory: "%kernel.root_dir%/../data/documents"
-  kasifi_gdrive.notification_config:
-    - name: A découper
-      type: 0
-      id: "%gdrive_directory_base_id%"
-    - name: A trier
-      type: 1
-      id: "%gdrive_directory_splited_id%"
 
 services:
   kasifi_gdrive.connector:
